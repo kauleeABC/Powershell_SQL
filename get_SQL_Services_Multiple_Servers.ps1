@@ -8,7 +8,7 @@ $servers = Get-Content .\Serverlist.txt
 $services = Get-Content .\Serviceslist.txt
 #>
 
-$servers= 't79tdw171sdb003', 't79tdw171sdb013'
+$servers= 'server1', 'server2'
 $services='MSSQLSERVER', 'SQLSERVERAGENT','MSSQLServerOLAPService'
 ##$services
 
