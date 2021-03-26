@@ -10,7 +10,7 @@ $services = Get-Content .\Serviceslist.txt
 #replace your server's name
 $servers= 'server1' , 'server2'
 $services='MSSQLSERVER', 'SQLSERVERAGENT','MSSQLServerOLAPService'
- ## (Get-WmiObject Win32_Service -Filter "Name='$serviceName'" -ComputerName T79TDW171SDB013).StartName 
+ ## (Get-WmiObject Win32_Service -Filter "Name='$serviceName'" -ComputerName yourComputername).StartName 
 foreach ($s in $servers)
 {
     foreach ($sv in $services)
