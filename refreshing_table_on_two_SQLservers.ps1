@@ -8,7 +8,7 @@ $server="source_server_name"
 $server2="Destination_server_name"
 $database="DB_name"
 $tableName="table_name"
-$query="SELECT top 15 * FROM sourcetable" #,"SELECT top 10 * FROM Pegasys.dbo.XACTION" 
+$query="SELECT * FROM sourcetable1" #,"SELECT * FROM sourcetable2" 
 #$queryValicate=" SELECT COUNT(*)  FROM Test_DB.dbo.xaction"
 $query_trucate="TRUNCATE TABLE destination_table"
 
