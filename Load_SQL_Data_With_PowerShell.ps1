@@ -13,7 +13,7 @@ replace variable as require
 Import-Module sqlserver
 #SQL server and query
 $source_srv="SRV_Name" 
-$$destination_srv="SRV_Name"
+$destination_srv="SRV_Name"
 #database name on destination server
 $database="DB"
 $tableName1="Table1"
@@ -40,10 +40,10 @@ $query_trucate="TRUNCATE TABLE DB.dbo.table1", "TRUNCATE TABLE DB.dbo.table2"
      }
 
         #function writing data to destination server
-      Function writeData ($source_srv, $$destination_srv, $query, $database, $tableName)
+      Function writeData ($source_srv, $destination_srv, $query, $database, $tableName)
       {
       $data=conn -server $source_srv -query $query 
-      $data | Write-SQLTableData -ServerInstance "$$destination_srv" -DatabaseName "$database" -SchemaName "dbo" -TableName "$tableName"
+      $data | Write-SQLTableData -ServerInstance "$destination_srv" -DatabaseName "$database" -SchemaName "dbo" -TableName "$tableName"
 
       }
 
@@ -52,11 +52,11 @@ $query_trucate="TRUNCATE TABLE DB.dbo.table1", "TRUNCATE TABLE DB.dbo.table2"
       #call conn function to trucate tables
       foreach ($q in $query_trucate)
       {      
-      conn -server $$destination_srv -query $query_trucate
+      conn -server $destination_srv -query $query_trucate
       }
 
-      writeData -server $source_srv -server2 $$destination_srv -query $query1 -database $database -tableName $tableName1
-      writeData -server $source_srv -server2 $$destination_srv -query $query2 -database $database -tableName $tableName2
+      writeData -server $source_srv -server2 $destination_srv -query $query1 -database $database -tableName $tableName1
+      writeData -server $source_srv -server2 $destination_srv -query $query2 -database $database -tableName $tableName2
 
       #export to csv file
       #Invoke-Sqlcmd -Query "$query" -ServerInstance "$source_srv" | #|  Export-Csv -Path "$filename.csv" -NoTypeInformation
