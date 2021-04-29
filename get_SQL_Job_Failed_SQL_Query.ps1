@@ -19,7 +19,7 @@ $Q= "           DECLARE @PreviousDate datetime
                 DECLARE @FinalDate INT
 
                 -- Initialize Variables
-                SET @PreviousDate = DATEADD(dd, -7, GETDATE()) -- Last 7 days 
+                SET @PreviousDate = DATEADD(dd, -1, GETDATE()) -- Last 1 days 
                 SET @Year = DATEPART(yyyy, @PreviousDate) 
                 SELECT @MonthPre = CONVERT(VARCHAR(2), DATEPART(mm, @PreviousDate))
                 SELECT @Month = RIGHT(CONVERT(VARCHAR, (@MonthPre + 1000000000)),2)
