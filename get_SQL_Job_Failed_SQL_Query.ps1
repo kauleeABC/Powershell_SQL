@@ -8,7 +8,6 @@ $db="Master"
 # get list of server from AD
 $getListSRV= (Get-ADComputer -Filter {name -like "*SDB*"} | Select-Object -Property name | 
  ConvertTo-Csv -NoTypeInformation | % { $_ -replace '"', ""} | select -Skip 1) #| out-file "c:\SDBServerList.csv" -fo -en ascii)
-#$getListSRV="T79TDW171SDB003"
 
 #Get Disk space
 $Q= "           DECLARE @PreviousDate datetime
@@ -49,7 +48,7 @@ $Q= "           DECLARE @PreviousDate datetime
                 ORDER BY h.instance_id DESC "
 
 #$instances =Invoke-Sqlcmd -ServerInstance $server -Database $DB -Query $instanceLookupQuery
-#$getListSRV='T79TDW171SDB003'
+
 $result= foreach ($s in $getListSRV){
            Invoke-Sqlcmd -ServerInstance $s -Database $DB -Query $Q #| Format-Table
            }
